@@ -27,10 +27,9 @@ pipeline {
             steps {
 	     script {
 	      docker.build registry +  ":$BUILD_NUMBER"       /* that is to give docker build a number in the docker registry so that we can have a good view of the project */
-	        sh 'mvn publish'
                 // 
               }
-	         } 
+	   } 
         }
     }
 }          
