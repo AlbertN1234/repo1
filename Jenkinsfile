@@ -12,22 +12,19 @@ pipeline {
             steps {
 	        sh 'mvn clean'                    /* maven command to clean */
 		sh 'mvn install'                  /* maven command to install */
-		sh 'mvn package'                  /* maven command to package */
-                // 
+		sh 'mvn package'                  /* maven command to package */ 
             }
         }
         stage('Test') { 
             steps {
 	        echo "test step"
 	        sh 'mvn test'                  /*maven command to test */
-                // 
             }
         }
         stage('Deploy') { 
             steps {
 	     script {
 	      docker.build registry +  ":$BUILD_NUMBER"       /* that is to give docker build a number in the docker registry so that we can have a good view of the project */
-                // 
               }
 	   } 
         }
